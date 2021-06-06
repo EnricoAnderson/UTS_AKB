@@ -71,11 +71,15 @@ public class GalleryFragment extends Fragment {
 
 
         recycler = (RecyclerView) root.findViewById(R.id.recycler_titles);
-        adapter = new DailyAdapter(data, getActivity());
+        adapter = new DailyAdapter(data, getActivity(), root);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
 
+
+
         return root;
     }
+
+
 }

@@ -16,6 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DateFormat;
@@ -30,11 +32,13 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.DailyVew> {
     ArrayList<Data> list;
     Dialog customDialog;
     Activity ac1;
+    View view;
     DataHelper db;
 
-    public DailyAdapter(ArrayList<Data> list, Activity ac){
+    public DailyAdapter(ArrayList<Data> list, Activity ac, View view1){
         this.list = list;
         this.ac1 = ac;
+        this.view = view1;
         db = new DataHelper(ac1.getApplicationContext());
         db.getReadableDatabase();
     }
@@ -85,14 +89,32 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.DailyVew> {
             Button delete = customDialog.findViewById(R.id.btnDelete);
             delete.setOnClickListener(t -> {
                 db.hapusDataDiary(data.id);
-                customDialog.dismiss();
 
+                Snackbar bar = Snackbar.make(view,
+                        "Data Dihapus Refresh page terlebih dahulu!",
+                        Snackbar.LENGTH_LONG);
+                View snackView = bar.getView();
+                TextView tv = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
+                tv.setMaxLines(4);
+                bar.setDuration(3000).setAction("Action", null).show();
+
+                customDialog.dismiss();
 
             });
 
             Button edit = customDialog.findViewById(R.id.btnEdit);
             edit.setOnClickListener(t -> {
                 db.editDataDiary(data.id, dialogJudul.getText().toString(),dialogKategori.getText().toString(), dialogIsi.getText().toString() );
+
+
+                Snackbar bar = Snackbar.make(view,
+                        "Data Diedit Refresh page terlebih dahulu!",
+                        Snackbar.LENGTH_LONG);
+                View snackView = bar.getView();
+                TextView tv = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
+                tv.setMaxLines(4);
+                bar.setDuration(3000).setAction("Action", null).show();
+
                 customDialog.dismiss();
             });
 

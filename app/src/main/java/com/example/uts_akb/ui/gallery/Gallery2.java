@@ -11,9 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.uts_akb.DataHelper;
 import com.example.uts_akb.R;
+import com.google.android.material.snackbar.Snackbar;
 
 
 public class Gallery2 extends DialogFragment {
@@ -40,9 +42,17 @@ public class Gallery2 extends DialogFragment {
 
             db.simpanDataDiary(dialogJudul.getText().toString() , dialogKategori.getText().toString(), dialogIsi.getText().toString());
 
+
+
+            Snackbar bar = Snackbar.make(root,
+                    "Data ditambah Refresh page terlebih dahulu!",
+                    Snackbar.LENGTH_LONG);
+            View snackView = bar.getView();
+            TextView tv = (TextView) snackView.findViewById(com.google.android.material.R.id.snackbar_text);
+            tv.setMaxLines(4);
+            bar.setDuration(3000).setAction("Action", null).show();
+
             dismiss();
-
-
 
         });
 
