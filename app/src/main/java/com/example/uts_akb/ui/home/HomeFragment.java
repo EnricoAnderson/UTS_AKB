@@ -14,6 +14,9 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.uts_akb.R;
 
+//10118353_Enrico Anderson_IF8
+//dibuat 6 Juni 2021
+
 public class HomeFragment extends Fragment {
 
 

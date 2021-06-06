@@ -25,6 +25,9 @@ import com.example.uts_akb.R;
 
 import java.util.ArrayList;
 
+//10118353_Enrico Anderson_IF8
+//dibuat 6 Juni 2021
+
 public class GalleryFragment extends Fragment {
 
     Button btn;

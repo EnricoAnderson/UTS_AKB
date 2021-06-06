@@ -17,6 +17,8 @@ import com.example.uts_akb.DataHelper;
 import com.example.uts_akb.R;
 import com.google.android.material.snackbar.Snackbar;
 
+//10118353_Enrico Anderson_IF8
+//dibuat 6 Juni 2021
 
 public class Gallery2 extends DialogFragment {
 

@@ -8,6 +8,9 @@ import android.util.Log;
 
 import java.util.ArrayList;
 
+//10118353_Enrico Anderson_IF8
+//dibuat 6 Juni 2021
+
 public class DataHelper extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "data_diary.db";
     private static final int DATABASE_VERSION = 1;
@@ -33,24 +36,6 @@ public class DataHelper extends SQLiteOpenHelper{
         simpanDataDiary("testjudul2", "testkategori2", "testis2i" );
         simpanDataDiary("testjudu3l", "testka3tegori", "test3isi" );
 
-//        sql = "INSERT OR REPLACE INTO Diary (NIM, Nama, Kelas, Prodi) VALUES ('10118139', 'Alles Ramadhan', 'IF4', 'Teknik Informatika')";
-//        Log.d("Insert admin", "onCreate: " + sql);
-//        db.execSQL(sql);
-
-//        sql = "CREATE TABLE Admin (" +
-//                "ID INTEGER PRIMARY KEY AUTOINCREMENT," +
-//                "Username VARCHAR(12) NOT NULL," +
-//                "Password TEXT NOT NULL)";
-//        Log.d("Admin", "onCreate: " + sql);
-//        db.execSQL(sql);
-
-//        sql = "INSERT OR REPLACE INTO Admin (Username, Password) VALUES ('admin', 'admin')";
-//        Log.d("Insert admin", "onCreate: " + sql);
-//        db.execSQL(sql);
-//
-//        sql = "INSERT OR REPLACE INTO Admin (Username, Password) VALUES ('alles', 'alles123')";
-//        Log.d("Insert admin", "onCreate: " + sql);
-//        db.execSQL(sql);
     }
 
     @Override
@@ -58,20 +43,6 @@ public class DataHelper extends SQLiteOpenHelper{
 
     }
 
-    public Boolean adminIsExist(String username, String password) {
-        boolean isExist = false;
-
-        SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM Admin WHERE Username='" + username + "' AND Password='" + password + "'";
-        Cursor cursor = db.rawQuery(sql, null);
-
-        if(cursor.getCount() > 0)
-            isExist = true;
-
-        cursor.close();
-
-        return isExist;
-    }
 
     public void simpanDataDiary(String judul, String kategori, String isi) {
         SQLiteDatabase db = this.getReadableDatabase();
@@ -85,21 +56,6 @@ public class DataHelper extends SQLiteOpenHelper{
         String sql = "UPDATE Diary SET JUDUL='" + judul + "', KATEGORI='" + kategori + "', ISI='" + isi + "' WHERE ID='" + id + "'";
         db.execSQL(sql);
     }
-
-//    public Boolean mhsIsExist(String NIM) {
-//        boolean isExist = false;
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        String sql = "SELECT * FROM Mahasiswa WHERE NIM='" + NIM + "'";
-//        Cursor cursor = db.rawQuery(sql, null);
-//
-//        if(cursor.getCount() > 0)
-//            isExist = true;
-//
-//        cursor.close();
-//
-//        return isExist;
-//    }
 
     public void hapusDataDiary(String id) {
         SQLiteDatabase db = this.getReadableDatabase();

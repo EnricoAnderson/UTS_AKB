@@ -1,4 +1,6 @@
 package com.example.uts_akb;
+//10118353_Enrico Anderson_IF8
+//dibuat 6 Juni 2021
 
 import android.app.Activity;
 import android.app.Dialog;
