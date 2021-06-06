@@ -1,15 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.gallery.Gallery2">
 
     <EditText
-        android:id="@+id/editTextDate"
+        android:id="@+id/tambahJudulDiary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="27dp"
+        android:layout_marginEnd="111dp"
+        android:layout_marginBottom="21dp"
         android:ems="10"
-        android:inputType="date" />
+        android:hint="Judul"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/tambahKategoriDiary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
-</FrameLayout>
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="65dp"
+        android:layout_marginEnd="146dp"
+        android:layout_marginBottom="27dp"
+        android:text="Tambah Data"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/tambahJudulDiary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/tambahKategoriDiary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="93dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginBottom="19dp"
+        android:ems="10"
+        android:hint="Kategori"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/tambahIsiDiary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tambahJudulDiary" />
+
+    <EditText
+        android:id="@+id/tambahIsiDiary"
+        android:layout_width="208dp"
+        android:layout_height="218dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginEnd="113dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Isi"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/btnSimpan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tambahKategoriDiary" />
+
+    <Button
+        android:id="@+id/btnSimpan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simpan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tambahIsiDiary" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

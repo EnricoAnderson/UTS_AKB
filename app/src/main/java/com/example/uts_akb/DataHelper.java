@@ -76,6 +76,7 @@ public class DataHelper extends SQLiteOpenHelper{
     public void simpanDataDiary(String judul, String kategori, String isi) {
         SQLiteDatabase db = this.getReadableDatabase();
         String sql = "INSERT INTO Diary (JUDUL, KATEGORI, ISI) VALUES ('" + judul + "', '" + kategori + "', '" + isi + "')";
+        Log.d("Insert admin", "onCreate: " + sql);
         db.execSQL(sql);
     }
 

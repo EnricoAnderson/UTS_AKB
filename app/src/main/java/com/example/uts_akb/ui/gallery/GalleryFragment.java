@@ -31,6 +31,8 @@ public class GalleryFragment extends Fragment {
     DataHelper db;
     RecyclerView recycler;
     DailyAdapter adapter;
+    ArrayList<Data> data;
+
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -42,6 +44,7 @@ public class GalleryFragment extends Fragment {
         customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         customDialog.setContentView(R.layout.fragment_gallery2);
         customDialog.setCancelable(true);
+
 
         btn=root.findViewById(R.id.popup);
 
@@ -56,10 +59,15 @@ public class GalleryFragment extends Fragment {
             }
         });
 
-        ArrayList<Data> data = db.tampilDataDiary();
+        data = db.tampilDataDiary();
+//        data = new ArrayList<Data>();
+//        data.add(new Data("1","inijudul","2-10-2000","daa","wadawdaw"));
+//        data.add(new Data("2","ini2judul","22-10-2000","daa2","wa2dawdaw"));
+//        data.add(new Data("3","ini3judul","23-10-2000","daa3","wa3dawdaw"));
+
 
         recycler = (RecyclerView) root.findViewById(R.id.recycler_titles);
-        adapter = new DailyAdapter(data);
+        adapter = new DailyAdapter(data, getActivity());
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         recycler.setLayoutManager(layoutManager);
         recycler.setAdapter(adapter);
