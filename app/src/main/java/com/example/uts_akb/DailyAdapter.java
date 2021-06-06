@@ -26,7 +26,7 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.DailyVew> {
     @NonNull
     @Override
     public DailyVew onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_music,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_gallery2,parent,false);
         return new DailyVew(view);
     }
 

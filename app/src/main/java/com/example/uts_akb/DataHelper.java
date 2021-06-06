@@ -19,11 +19,11 @@ public class DataHelper extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE Diary (" +
-                "ID INT(10) NOT NULL AUTO_INCREMENT," +
-                "TANGGAL DATETIME DEFAULT (datetime('now','localtime'))) NOT NULL," +
+                "ID INTEGER," +
+                "TANGGAL DATETIME DEFAULT (datetime('now','localtime')) NOT NULL," +
                 "JUDUL TEXT NOT NULL," +
                 "KATEGORI TEXT NOT NULL," +
-                "ISI Text NOT NULL,"+
+                "ISI TEXT NOT NULL,"+
                 "PRIMARY KEY (ID));";
 
         Log.d("Data", "onCreate: " + sql);
@@ -108,7 +108,7 @@ public class DataHelper extends SQLiteOpenHelper{
 
     public ArrayList<Data> tampilDataDiary() {
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "SELECT * FROM Diary ORDER BY TANGGAL";
+        String sql = "SELECT * FROM Diary ORDER BY TANGGAL;";
         Cursor cursor = db.rawQuery(sql, null);
         ArrayList<Data> d = new ArrayList<Data>();
 
@@ -126,6 +126,7 @@ public class DataHelper extends SQLiteOpenHelper{
 
             Data dta = new Data(id, judul, tanggal, kategori, isi);
             d.add(dta);
+
         } while (cursor.moveToNext());
 
         cursor.close();
