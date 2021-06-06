@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,10 +30,13 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.DailyVew> {
     ArrayList<Data> list;
     Dialog customDialog;
     Activity ac1;
+    DataHelper db;
 
     public DailyAdapter(ArrayList<Data> list, Activity ac){
         this.list = list;
         this.ac1 = ac;
+        db = new DataHelper(ac1.getApplicationContext());
+        db.getReadableDatabase();
     }
 
     @NonNull
@@ -42,8 +46,10 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.DailyVew> {
 
         customDialog = new Dialog(ac1);
         customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        customDialog.setContentView(R.layout.fragment_gallery2);
+        customDialog.setContentView(R.layout.fragment_gallery3);
         customDialog.setCancelable(true);
+
+
 
         return new DailyVew(view);
     }
@@ -75,6 +81,20 @@ public class DailyAdapter extends RecyclerView.Adapter<DailyAdapter.DailyVew> {
             dialogJudul.setText(data.judul);
             dialogKategori.setText(data.kategori);
             dialogIsi.setText(data.isi);
+
+            Button delete = customDialog.findViewById(R.id.btnDelete);
+            delete.setOnClickListener(t -> {
+                db.hapusDataDiary(data.id);
+                customDialog.dismiss();
+
+
+            });
+
+            Button edit = customDialog.findViewById(R.id.btnEdit);
+            edit.setOnClickListener(t -> {
+                db.editDataDiary(data.id, dialogJudul.getText().toString(),dialogKategori.getText().toString(), dialogIsi.getText().toString() );
+                customDialog.dismiss();
+            });
 
             customDialog.show();
 

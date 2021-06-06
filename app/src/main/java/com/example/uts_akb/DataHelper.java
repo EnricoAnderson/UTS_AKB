@@ -103,7 +103,7 @@ public class DataHelper extends SQLiteOpenHelper{
 
     public void hapusDataDiary(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "DELETE FROM id WHERE ID='" + id + "'";
+        String sql = "DELETE FROM Diary WHERE ID='" + id + "'";
         db.execSQL(sql);
     }
 

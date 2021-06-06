@@ -2,6 +2,7 @@ package com.example.uts_akb.ui.gallery;
 
 import android.app.Dialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ public class GalleryFragment extends Fragment {
 
 
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-
+        Log.d("inilog1", "ini log1");
         customDialog = new Dialog(getActivity());
         customDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         customDialog.setContentView(R.layout.fragment_gallery2);
@@ -55,7 +56,10 @@ public class GalleryFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                customDialog.show();
+                Gallery2 dialog = new Gallery2();
+                dialog.show(getActivity().getSupportFragmentManager(), "wasd");
+
+//                customDialog.show();
             }
         });
 
